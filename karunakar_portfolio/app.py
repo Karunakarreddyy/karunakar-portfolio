@@ -365,15 +365,16 @@ for i, (title, issuer, cert_url) in enumerate(certs):
         st.link_button("View Certificate ↗", cert_url, use_container_width=True)
 
 
+
 # Resume and Contact
 st.markdown("""
-<div class="section-header">
-    <h2>Resume & Contact</h2>
+<div id="contact" class="section-header">
+    <h2>Resume &amp; Contact</h2>
     <p>Let's connect and explore opportunities to work together.</p>
 </div>
 """, unsafe_allow_html=True)
 
-c1, c2 = st.columns([1, 1])
+c1, c2 = st.columns(2)
 
 # Contact Information
 with c1:
@@ -387,6 +388,16 @@ with c1:
         <p><strong>Location:</strong> {LOCATION}</p>
     </div>
     """, unsafe_allow_html=True)
+
+# Resume Information
+with c2:
+    st.markdown("""
+    <div class="card">
+        <h3>📄 My Resume</h3>
+        <p>Explore my education, technical skills, and data analytics projects.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 # Resume and Social Links
 with c2:
