@@ -407,7 +407,7 @@ with c2:
         with r_view:
             st.link_button(
                 "👁️ View Resume",
-                "https://drive.google.com/file/d/YOUR_RESUME_FILE_ID/view",
+                "https://github.com/Karunakareddyy/karunakar-portfolio/blob/main/karunakar_portfolio/assets/resume.pdf",
                 use_container_width=True
             )
 
@@ -422,8 +422,8 @@ with c2:
 
     else:
         st.error(
-            "Resume PDF not found. Please place your resume at "
-            "assets/resume.pdf inside your portfolio folder."
+            "Resume PDF not found. Please check that resume.pdf "
+            "exists inside the assets folder."
         )
 
     st.link_button(
