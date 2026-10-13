@@ -388,6 +388,7 @@ with c1:
     </div>
     """, unsafe_allow_html=True)
 
+
 # Resume and Social Links
 with c2:
     st.markdown("""
@@ -404,13 +405,11 @@ with c2:
         r_view, r_download = st.columns(2)
 
         with r_view:
-            if st.button(
+            st.link_button(
                 "👁️ View Resume",
+                "https://drive.google.com/file/d/YOUR_RESUME_FILE_ID/view",
                 use_container_width=True
-            ):
-                st.session_state["show_resume_preview"] = not (
-                    st.session_state.get("show_resume_preview", False)
-                )
+            )
 
         with r_download:
             st.download_button(
@@ -421,28 +420,6 @@ with c2:
                 use_container_width=True
             )
 
-        if st.session_state.get("show_resume_preview", False):
-            st.markdown("### Resume Preview")
-
-            pdf_base64 = base64.b64encode(
-                resume_bytes
-            ).decode("utf-8")
-
-            pdf_html = f"""
-            <iframe
-                src="data:application/pdf;base64,{pdf_base64}"
-                width="100%"
-                height="760"
-                style="border: none; border-radius: 8px;"
-                type="application/pdf">
-            </iframe>
-            """
-
-            st.components.v1.html(
-                pdf_html,
-                height=780,
-                scrolling=True
-            )
     else:
         st.error(
             "Resume PDF not found. Please place your resume at "
