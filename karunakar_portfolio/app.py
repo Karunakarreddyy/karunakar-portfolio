@@ -388,7 +388,6 @@ with c1:
     </div>
     """, unsafe_allow_html=True)
 
-
 # Resume and Social Links
 with c2:
     st.markdown("""
@@ -399,18 +398,21 @@ with c2:
     </div>
     """, unsafe_allow_html=True)
 
+    # Check that the resume PDF exists in the assets folder
     if RESUME_FILE.is_file():
         resume_bytes = RESUME_FILE.read_bytes()
 
         r_view, r_download = st.columns(2)
 
+        # View Resume on GitHub
         with r_view:
             st.link_button(
                 "👁️ View Resume",
-                "https://github.com/Karunakareddyy/karunakar-portfolio/blob/main/karunakar_portfolio/assets/resume.pdf",
+                "https://github.com/Karunakarreddyy/karunakar-portfolio/blob/main/karunakar_portfolio/assets/resume.pdf",
                 use_container_width=True
             )
 
+        # Download Resume directly from the app
         with r_download:
             st.download_button(
                 label="⬇️ Download PDF",
@@ -419,24 +421,26 @@ with c2:
                 mime="application/pdf",
                 use_container_width=True
             )
-
     else:
         st.error(
-            "Resume PDF not found. Please check that resume.pdf "
-            "exists inside the assets folder."
+            "Resume PDF not found. Make sure resume.pdf exists "
+            "inside the assets folder."
         )
 
+    # LinkedIn Profile
     st.link_button(
         "🔗 LinkedIn Profile",
-        LINKEDIN_URL,
+        LINKEDIN_URL.strip(),
         use_container_width=True
     )
 
+    # GitHub Profile
     st.link_button(
         "💻 GitHub Profile",
-        GITHUB_URL,
+        GITHUB_URL.strip(),
         use_container_width=True
     )
+
 
 # Footer
 st.markdown("""
