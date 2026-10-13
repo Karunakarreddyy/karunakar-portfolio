@@ -423,14 +423,25 @@ with c2:
         if st.session_state.get("show_resume_preview", False):
             st.markdown("### Resume Preview")
 
-            if hasattr(st, "pdf"):
-                st.pdf(resume_bytes, height=760)
-            else:
-                st.warning(
-                    "Your Streamlit version does not support the "
-                    "built-in PDF viewer. You can still download "
-                    "your resume using the button above."
-                )
+            pdf_base64 = base64.b64encode(
+                resume_bytes
+            ).decode("utf-8")
+
+            pdf_html = f"""
+            <iframe
+                src="data:application/pdf;base64,{pdf_base64}"
+                width="100%"
+                height="760"
+                style="border: none; border-radius: 8px;"
+                type="application/pdf">
+            </iframe>
+            """
+
+            st.components.v1.html(
+                pdf_html,
+                height=780,
+                scrolling=True
+            )
     else:
         st.error(
             "Resume PDF not found. Please place your resume at "
